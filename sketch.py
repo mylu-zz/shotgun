@@ -10,9 +10,11 @@ import StringIO
 #from sklearn import tree
 #from sklearn import linear_model
 
-symbol = 'goog'
+symbol = 'msft'
 
 """
+Note that Google for some reason only returns prices for 3/27/2014 - present, not full IPO length? Why
+
 http://ichart.finance.yahoo.com/table.csv?s=GE&a=00&b=2&c=1962&d=05&e=10&f=2014&g=d&ignore=.csv
 
 Meaning of parameters 
@@ -31,7 +33,7 @@ g = type of request (time interval)
 	v -> Dividends only
 """
 
-url = 'http://ichart.yahoo.com/table.csv?s=' + symbol #+ '&a=5&b=1&c=2009 &d=0&e=31&f=2010&g=w&ignore=.csv'
+url = "http://ichart.finance.yahoo.com/table.csv?s=" + symbol + "&a=00&b=2&c=1962&d=05&e=10&f=2014&g=d&ignore=.csv"
 q = urllib2.urlopen(url)
 csvfile = q.read()
 f = StringIO.StringIO(csvfile)
@@ -45,5 +47,6 @@ for row in reader:
 blah = np.matrix(stock_info)
 blah = blah[1:,1:]
 
+print blah
 
 
