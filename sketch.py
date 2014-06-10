@@ -53,7 +53,6 @@ percent_change_open = np.matrix(['PercChangeOpen1Day',np.nan]+percent_change_ope
 # add as another feature column
 stock_info = np.append(stock_info, percent_change_open, axis=1)
 
-
 #Percent changes in OPENING price per 5 days
 percent_change_5_open = [np.divide((x - open_price[i-5]), open_price[i - 5]) for i, x in enumerate(open_price)][5:]
 percent_change_5_open = np.matrix(['PercChangeOpen5Day',np.nan,np.nan,np.nan,np.nan,np.nan]+percent_change_5_open).T
